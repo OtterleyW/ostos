@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { Provider, connect } from "react-redux";
 import { Container } from "semantic-ui-react";
 import { Header } from "semantic-ui-react";
 import { Button } from "semantic-ui-react";
 import ExampleList from "./ExampleList";
+import configureStore from "./state/configureStore";
 
 class App extends Component {
   render() {
@@ -17,7 +19,7 @@ class App extends Component {
           <ExampleList />
           <Button
             color="teal"
-            content="Hurraa"
+            content={`Hurraa ${this.props.moos}`}
             icon="heart"
             label={{
               basic: true,
@@ -25,6 +27,7 @@ class App extends Component {
               pointing: "left",
               content: "2,048"
             }}
+            onClick={() => this.props.doMoo()}
           />
         </div>
       </Container>
@@ -32,4 +35,30 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    moos: state.moos
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    doMoo: () => dispatch({ type: "MOO" })
+  };
+}
+
+const ConnectedApp = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
+
+function AppWrapper() {
+  const store = configureStore();
+  return (
+    <Provider store={store}>
+      <ConnectedApp />
+    </Provider>
+  );
+}
+
+export default AppWrapper;

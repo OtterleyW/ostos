@@ -10,9 +10,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Ostos</h1>
         </header>
-        <p className="App-intro">
-          Eeppinen ostoslistasovellus.
-        </p>
+
+        <p className="App-intro">Eeppinen ostoslistasovellus.</p>
       </div>
     );
   }

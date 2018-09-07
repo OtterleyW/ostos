@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import { Button } from "semantic-ui-react";
 
 class App extends Component {
   render() {
@@ -10,6 +10,18 @@ class App extends Component {
         </header>
 
         <p className="App-intro">Eeppinen ostoslistasovellus.</p>
+
+        <Button
+          color="teal"
+          content="Hurraa"
+          icon="heart"
+          label={{
+            basic: true,
+            color: "blue",
+            pointing: "left",
+            content: "2,048"
+          }}
+        />
       </div>
     );
   }
